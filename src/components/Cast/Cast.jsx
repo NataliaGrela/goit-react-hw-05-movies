@@ -30,7 +30,7 @@ const Cast = () => {
               <div className="cast-wrapper">
                 <img
                   className="cast-img"
-                  src={baseUrlImg + profile_path}
+                  src={baseUrlImg + profile_path} alt="cast"
                 ></img>
               </div>
               <span>{name}</span>

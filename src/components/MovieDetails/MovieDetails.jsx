@@ -24,7 +24,7 @@ const MovieDetails = ({ image }) => {
     <div>
       <Link to={`/${baseUrl}/`}> {'<< Go Back'} </Link>
       <div className="details">
-        <img src={baseUrlImg + image} atl="movie image"></img>
+        <img src={baseUrlImg + image} alt="movie details"></img>
         <div>
           <h3>{details.title}</h3>
           <span></span>
