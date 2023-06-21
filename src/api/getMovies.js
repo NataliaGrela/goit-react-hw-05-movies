@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-export const getMovies = async (page, query, endPoint, params) => {
+export const getMovies = async (endPoint, params) => {
   const API_URL = 'https://api.themoviedb.org/3/';
-  const API_KEY = '98508827f05a75ce090c198b346c38ec';
   const config = {
     headers: {
       Authorization:

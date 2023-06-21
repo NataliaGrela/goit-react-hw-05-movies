@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { getMovies } from 'api/getMovies';
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Movies = ({ setCurrentImage }) => {
@@ -13,7 +12,7 @@ const Movies = ({ setCurrentImage }) => {
     e.preventDefault();
     const params = `?query=${query}&include_adult=false&language=en-US`;
     const fetchMovies = async () => {
-      const newMovies = await getMovies(1, null, endPoint, params);
+      const newMovies = await getMovies(endPoint, params);
       setMovies(newMovies.results);
     };
     await fetchMovies();

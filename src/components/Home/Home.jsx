@@ -5,13 +5,12 @@ import { Link } from 'react-router-dom';
 
 const Home = ({ setCurrentImage }) => {
   const [movies, setMovies] = useState([]);
-  const [page, setPage] = useState(1);
   const endPoint = '/trending/all/';
   const params = '/day?language=en-US';
 
   useEffect(() => {
     const fetchMovies = async () => {
-      const newMovies = await getMovies(page, null, endPoint, params);
+      const newMovies = await getMovies(endPoint, params);
       setMovies(newMovies.results);
     };
 

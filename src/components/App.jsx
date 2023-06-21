@@ -1,10 +1,6 @@
 import {
-  createBrowserRouter,
-  createRoutesFromElements,
   Route,
-  RouterProvider,
   Routes,
-  BrowserRouter,
 } from 'react-router-dom';
 import React, { useState, Suspense } from 'react';
 

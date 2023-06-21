@@ -11,7 +11,7 @@ const Cast = () => {
   const [cast, setCast] = useState([]);
   useEffect(() => {
     const fetchMovies = async () => {
-      const response = await getMovies(1, null, endPointCredits, '');
+      const response = await getMovies( endPointCredits, '');
       setCast(response.cast);
       console.log(response);
     };
@@ -31,7 +31,6 @@ const Cast = () => {
                 <img
                   className="cast-img"
                   src={baseUrlImg + profile_path}
-                  alt="profile image"
                 ></img>
               </div>
               <span>{name}</span>

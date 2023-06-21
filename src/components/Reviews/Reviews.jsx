@@ -9,7 +9,7 @@ const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
     const fetchMovies = async () => {
-      const response = await getMovies(1, null, endPointReviews, '');
+      const response = await getMovies(endPointReviews, '');
       setReviews(response.results);
   
     };

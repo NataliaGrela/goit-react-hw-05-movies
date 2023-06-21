@@ -11,7 +11,7 @@ const MovieDetails = ({ image }) => {
   const [details, setDetails] = useState();
   useEffect(() => {
     const fetchMovies = async () => {
-      const response = await getMovies(1, null, endPoint, '');
+      const response = await getMovies(endPoint, '');
       setDetails(response);
 
     };
@@ -24,7 +24,7 @@ const MovieDetails = ({ image }) => {
     <div>
       <Link to={`/${baseUrl}/`}> {'<< Go Back'} </Link>
       <div className="details">
-        <img src={baseUrlImg + image}></img>
+        <img src={baseUrlImg + image} atl="movie image"></img>
         <div>
           <h3>{details.title}</h3>
           <span></span>
