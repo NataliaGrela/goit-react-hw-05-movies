@@ -44,6 +44,10 @@ main {
   margin-left: 100px;
 }
 
+.active {
+  color: red;
+}
+
 .nav-el:hover,
 .nav-el:focus {
   color: red;
