@@ -11,7 +11,6 @@ const Reviews = () => {
     const fetchMovies = async () => {
       const response = await getMovies(endPointReviews, '');
       setReviews(response.results);
-  
     };
 
     fetchMovies();
@@ -24,18 +23,19 @@ const Reviews = () => {
         {reviews.map(item => {
           const { author, content } = item;
           return (
-            <li>
-              <h4>{author}
-              </h4>
-              <p>{content}</p>
+            <li className="review-list">
+              <h4 className="review-author">{author}</h4>
+              <p className="review-content">{content}</p>
             </li>
           );
         })}
       </ul>
     </div>
-  ) : <div>
+  ) : (
+    <div>
       <p>We don't have any reviews for this movie.</p>
-  </div>;
+    </div>
+  );
 };
 
 export default Reviews;

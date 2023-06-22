@@ -1,7 +1,4 @@
-import {
-  Route,
-  Routes,
-} from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import React, { useState, Suspense } from 'react';
 
 const Home = React.lazy(() => import('components/Home/Home'));
@@ -16,15 +13,7 @@ const baseUrl = 'goit-react-hw-05-movies';
 export const App = () => {
   const [currentImage, setCurrentImage] = useState();
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-      }}
-    >
+    <div>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route element={<Layout />}>

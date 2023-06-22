@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { getMovies } from 'api/getMovies';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -47,6 +48,10 @@ const Home = ({ setCurrentImage }) => {
       )}
     </div>
   );
+};
+
+Home.propTypes = {
+  setCurrentImage: PropTypes.func.isRequired,
 };
 
 export default Home;

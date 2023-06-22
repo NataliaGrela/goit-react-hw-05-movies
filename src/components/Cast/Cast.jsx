@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { getMovies } from 'api/getMovies';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -11,7 +12,7 @@ const Cast = () => {
   const [cast, setCast] = useState([]);
   useEffect(() => {
     const fetchMovies = async () => {
-      const response = await getMovies( endPointCredits, '');
+      const response = await getMovies(endPointCredits, '');
       setCast(response.cast);
       console.log(response);
     };
@@ -26,15 +27,18 @@ const Cast = () => {
         {cast.map(item => {
           const { profile_path, name, character } = item;
           return (
-            <li>
+            <li className="cast-item">
               <div className="cast-wrapper">
                 <img
                   className="cast-img"
-                  src={baseUrlImg + profile_path} alt="cast"
-                ></img>
+                  src={baseUrlImg + profile_path}
+                  alt="cast"
+                />
               </div>
-              <span>{name}</span>
-              <span>Character: {character}</span>
+              <div className="cast-info">
+                <span className="cast-name">{name}</span>
+                <span className="cast-character">Character: {character}</span>
+              </div>
             </li>
           );
         })}
@@ -45,6 +49,10 @@ const Cast = () => {
       <p>We don't have any cast for this movie.</p>
     </div>
   );
+};
+
+Cast.propTypes = {
+  movieId: PropTypes.string.isRequired,
 };
 
 export default Cast;

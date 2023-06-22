@@ -10,10 +10,7 @@ export const getMovies = async (endPoint, params) => {
   };
 
   try {
-    const response = await axios.get(
-      API_URL + endPoint + params,
-      config
-    );
+    const response = await axios.get(API_URL + endPoint + params, config);
     const { data } = response;
     // if (data.results.length === 0) {
     //   //   alert(
@@ -22,7 +19,7 @@ export const getMovies = async (endPoint, params) => {
     // }
     return data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
     // alert(
     //   'Sorry, there was an error. Please try again later.'
     // );

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { getMovies } from 'api/getMovies';
 import { Link } from 'react-router-dom';
@@ -26,8 +27,9 @@ const Movies = ({ setCurrentImage }) => {
   return (
     <div>
       <form>
-        <input onChange={handleChange}></input>
+        <input className="input" onChange={handleChange}></input>
         <button
+          className="btn"
           style={!query ? { pointerEvents: 'none' } : {}}
           type="click"
           onClick={handleSubmit}
@@ -60,6 +62,10 @@ const Movies = ({ setCurrentImage }) => {
       )}
     </div>
   );
+};
+
+Movies.propTypes = {
+  setCurrentImage: PropTypes.func.isRequired,
 };
 
 export default Movies;
