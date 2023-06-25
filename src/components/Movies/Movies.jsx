@@ -1,22 +1,33 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getMovies } from 'api/getMovies';
 import { Link } from 'react-router-dom';
+import { useEndPoints } from 'api/endPoints';
 
 const Movies = ({ setCurrentImage }) => {
   const [query, setQuery] = useState();
   const [movies, setMovies] = useState();
+  const [submit, setSubmit] = useState(false);
+  const { search, searchParams } = useEndPoints();
 
-  const endPoint = '/search/movie';
+  useEffect(() => {
+    if (query) {
+      const params = searchParams(query);
+      const endPoint = search();
+
+      const fetchMovies = async () => {
+        const newMovies = await getMovies(endPoint, params);
+        setMovies(newMovies.results);
+      };
+      fetchMovies();
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [submit]);
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const params = `?query=${query}&include_adult=false&language=en-US`;
-    const fetchMovies = async () => {
-      const newMovies = await getMovies(endPoint, params);
-      setMovies(newMovies.results);
-    };
-    await fetchMovies();
+    setSubmit(!submit);
   };
 
   const handleChange = e => {

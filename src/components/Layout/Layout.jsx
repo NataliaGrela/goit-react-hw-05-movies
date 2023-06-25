@@ -1,9 +1,9 @@
+import { useEndPoints } from 'api/endPoints';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 
 const Layout = () => {
-  const baseUrl = 'goit-react-hw-05-movies';
+  const { baseUrl } = useEndPoints();
   const location = useLocation();
-  console.log(location);
   const isActive = page => {
     return location.pathname.includes(page);
   };

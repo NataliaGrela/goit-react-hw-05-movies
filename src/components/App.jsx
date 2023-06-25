@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import React, { useState, Suspense } from 'react';
+import { useEndPoints } from 'api/endPoints';
 
 const Home = React.lazy(() => import('components/Home/Home'));
 const Movies = React.lazy(() => import('components/Movies/Movies'));
@@ -8,9 +9,8 @@ const Cast = React.lazy(() => import('./Cast/Cast'));
 const Reviews = React.lazy(() => import('./Reviews/Reviews'));
 const Layout = React.lazy(() => import('./Layout/Layout'));
 
-const baseUrl = 'goit-react-hw-05-movies';
-
 export const App = () => {
+  const {baseUrl} = useEndPoints()
   const [currentImage, setCurrentImage] = useState();
   return (
     <div>

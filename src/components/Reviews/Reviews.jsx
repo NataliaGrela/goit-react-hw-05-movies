@@ -2,10 +2,14 @@ import { getMovies } from 'api/getMovies';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { useEndPoints } from 'api/endPoints';
 
 const Reviews = () => {
   const { movieId } = useParams();
-  const endPointReviews = `/movie/${movieId}/reviews`;
+  const { reviews: reviewsPath } = useEndPoints();
+
+  const endPointReviews = reviewsPath(movieId);
+
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
     const fetchMovies = async () => {

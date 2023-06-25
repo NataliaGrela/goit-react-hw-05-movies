@@ -3,18 +3,19 @@ import { getMovies } from 'api/getMovies';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
-
-const baseUrlImg = 'https://image.tmdb.org/t/p/w500/';
+import { useEndPoints } from 'api/endPoints';
 
 const Cast = () => {
   const { movieId } = useParams();
-  const endPointCredits = `/movie/${movieId}/credits`;
+  const { credits, baseUrlImg } = useEndPoints()
+
+  const endPointCredits = credits(movieId)
+
   const [cast, setCast] = useState([]);
   useEffect(() => {
     const fetchMovies = async () => {
       const response = await getMovies(endPointCredits, '');
       setCast(response.cast);
-      console.log(response);
     };
 
     fetchMovies();
@@ -23,7 +24,7 @@ const Cast = () => {
 
   return cast.length > 0 ? (
     <div>
-      <ul>
+      <ul className="cast">
         {cast.map(item => {
           const { profile_path, name, character } = item;
           return (

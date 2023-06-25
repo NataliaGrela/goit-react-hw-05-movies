@@ -39,7 +39,7 @@ h1 {
   background-color: white;
   z-index: 1100;
   width: 100%;
-  border-bottom: 1px solid black;
+   box-shadow: 0 4px 6px -6px #222;
 }
 
 .nav-el {
@@ -60,7 +60,6 @@ h1 {
 .active {
   color: red;
 }
-
 
 /*title-list*/
 
@@ -209,6 +208,10 @@ h1 {
 }
 
 /*cast*/
+
+.cast {
+  padding-left: 20px;
+}
 
 .cast-item {
   display: flex;

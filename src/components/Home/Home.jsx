@@ -3,15 +3,17 @@ import { getMovies } from 'api/getMovies';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useEndPoints } from 'api/endPoints';
 
 const Home = ({ setCurrentImage }) => {
   const [movies, setMovies] = useState([]);
-  const endPoint = '/trending/all/';
-  const params = '/day?language=en-US';
+  const { trending, params } = useEndPoints();
+  const endPoint = trending();
+  const endPointParams = params();
 
   useEffect(() => {
     const fetchMovies = async () => {
-      const newMovies = await getMovies(endPoint, params);
+      const newMovies = await getMovies(endPoint, endPointParams);
       setMovies(newMovies.results);
     };
 

@@ -2,13 +2,14 @@ import PropTypes from 'prop-types';
 import { useParams, Link, Outlet } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMovies } from 'api/getMovies';
-
-const baseUrlImg = 'https://image.tmdb.org/t/p/w500/';
-const baseUrl = 'goit-react-hw-05-movies';
+import { useEndPoints } from 'api/endPoints';
 
 const MovieDetails = ({ image }) => {
   const { movieId } = useParams();
-  const endPoint = `/movie/${movieId}`;
+  const { movieDetails, baseUrl, baseUrlImg } = useEndPoints();
+
+  const endPoint = movieDetails(movieId);
+
   const [details, setDetails] = useState('');
 
   useEffect(() => {
