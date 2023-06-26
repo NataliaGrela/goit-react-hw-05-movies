@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
-import { getMovies } from 'api/getMovies';
+import { get } from 'api/get';
 import { Link } from 'react-router-dom';
 import { useEndPoints } from 'api/endPoints';
 
@@ -15,11 +15,11 @@ const Movies = ({ setCurrentImage }) => {
       const params = searchParams(query);
       const endPoint = search();
 
-      const fetchMovies = async () => {
-        const newMovies = await getMovies(endPoint, params);
+      const fetchMoviesSearch = async () => {
+        const newMovies = await get(endPoint, params);
         setMovies(newMovies.results);
       };
-      fetchMovies();
+      fetchMoviesSearch();
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

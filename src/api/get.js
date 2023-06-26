@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getMovies = async (endPoint, params) => {
+export const get = async (endPoint, params) => {
   const API_URL = 'https://api.themoviedb.org/3/';
   const config = {
     headers: {

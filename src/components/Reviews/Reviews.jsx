@@ -1,4 +1,4 @@
-import { getMovies } from 'api/getMovies';
+import { get } from 'api/get';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -12,12 +12,12 @@ const Reviews = () => {
 
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    const fetchMovies = async () => {
-      const response = await getMovies(endPointReviews, '');
+    const fetchReviews = async () => {
+      const response = await get(endPointReviews, '');
       setReviews(response.results);
     };
 
-    fetchMovies();
+    fetchReviews();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { getMovies } from 'api/getMovies';
+import { get } from 'api/get';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -13,12 +13,12 @@ const Cast = () => {
 
   const [cast, setCast] = useState([]);
   useEffect(() => {
-    const fetchMovies = async () => {
-      const response = await getMovies(endPointCredits, '');
+    const fetchCast = async () => {
+      const response = await get(endPointCredits, '');
       setCast(response.cast);
     };
 
-    fetchMovies();
+    fetchCast();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

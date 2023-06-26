@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useParams, Link, Outlet } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getMovies } from 'api/getMovies';
+import { get } from 'api/get';
 import { useEndPoints } from 'api/endPoints';
 
 const MovieDetails = ({ image }) => {
@@ -13,12 +13,12 @@ const MovieDetails = ({ image }) => {
   const [details, setDetails] = useState('');
 
   useEffect(() => {
-    const fetchMovies = async () => {
-      const response = await getMovies(endPoint, '');
+    const fetchMovieDetails = async () => {
+      const response = await get(endPoint, '');
       setDetails(response);
     };
 
-    fetchMovies();
+    fetchMovieDetails();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
